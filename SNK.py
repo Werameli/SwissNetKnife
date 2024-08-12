@@ -23,7 +23,7 @@ art.menuart()
 art.borderstripe()
 
 print("\nCollection of scripts for various network tasks")
-print("Release: Ver. Alpha 1.0\n")
+print("Release: Ver. Alpha 1.1\n")
 
 class SNK_Shell(cmd.Cmd):
     intro = "SwissNetKnife Shell\n(C) TeamSNK. All rights reserved\n"
@@ -49,7 +49,7 @@ class SNK_Shell(cmd.Cmd):
                 versionfile = open(".version", "r")
                 version = versionfile.read()
                 versionfile.close()
-                repoversion = requests.get("https://pastebin.com/raw/hVGYiDqt").text
+                repoversion = requests.get("https://raw.githubusercontent.com/Werameli/SwissNetKnife/master/.version").text
 
                 print(color.yellow)
                 print(f"Your version is {version}")

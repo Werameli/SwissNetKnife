@@ -1,17 +1,19 @@
 import urllib.request
 import subprocess
 import requests
+import shutil
 import lib.color as color
 import time
 import zipfile
 import os
 
+updated = False
 
 def update_check():
     versionfile = open(".version", "r")
     version = versionfile.read()
     versionfile.close()
-    repoversion = requests.get("https://pastebin.com/raw/hVGYiDqt").text
+    repoversion = requests.get("https://raw.githubusercontent.com/Werameli/SwissNetKnife/master/.version").text
 
     if version != repoversion:
         print(color.yellow)
@@ -28,47 +30,62 @@ def update_check():
 def update():
     print(color.green)
     print("Starting update process...")
+    if not os.path.isdir(f"{os.getcwd()}/tmp"):
+        os.mkdir(f"{os.getcwd()}/tmp")
+    else:
+        pass
     time.sleep(2)
 
-    print("Retrieving and updating SNK.py")
+    print("Retrieving update files...")
     try:
-        urllib.request.urlretrieve("https://raw.githubusercontent.com/Werameli/SwissNetKnife/master/SNK.py", "SNK.py")
+        urllib.request.urlretrieve("https://raw.githubusercontent.com/Werameli/SwissNetKnife/master/SNK.py",
+                                   f"{os.getcwd()}/tmp/SNK.py")
+        urllib.request.urlretrieve("https://raw.githubusercontent.com/Werameli/SwissNetKnife/master/lib.zip",
+                                   f"{os.getcwd()}/tmp/lib.zip")
+        urllib.request.urlretrieve("https://raw.githubusercontent.com/Werameli/SwissNetKnife/master/.version",
+                                   f"{os.getcwd()}/tmp/.version")
+        urllib.request.urlretrieve("https://raw.githubusercontent.com/Werameli/SwissNetKnife/master/loader.py",
+                                   f"{os.getcwd()}/tmp/loader.py")
     except urllib.request.HTTPError:
         print(color.red)
         print("Fatal error occured while downloading update!")
         print("Please, try again later!")
         exit(0)
 
-    print("Retrieving libraries...")
-    try:
-        urllib.request.urlretrieve("https://raw.githubusercontent.com/Werameli/SwissNetKnife/master/lib.zip", "lib.zip")
-    except urllib.request.HTTPError:
-        print(color.red)
-        print("Fatal error occured while downloading update!")
-        print("Please, try again later!")
-        exit(0)
 
-    print("Updating libraries...")
+
+    print("Updating files...")
     try:
-        with zipfile.ZipFile("lib.zip", 'r') as zip_ref:
+        os.remove(f"{os.getcwd()}/SNK.py")
+        os.rmdir(f"{os.getcwd()}/lib")
+        os.remove(f"{os.getcwd()}/.version")
+        os.remove(f"{os.getcwd()}/loader.py")
+
+        with zipfile.ZipFile(f"{os.getcwd()}/tmp/lib.zip", 'r') as zip_ref:
             zip_ref.extractall(os.getcwd())
-    except zipfile.BadZipFile:
+            zip_ref.close()
+        shutil.move("SNK.py", f"{os.getcwd()}")
+        shutil.move(".version", f"{os.getcwd()}")
+        shutil.move("loader.py", f"{os.getcwd()}")
+    except shutil.Error or zipfile.BadZipFile as error:
         print(color.red)
-        print("Fatal error occured while installing libraries!")
+        print(error)
+        print("Fatal error occured while updating files!")
         print("Please, contact our developer team to solve the issue!")
         exit(0)
 
-    return True
+    os.rmdir(f"{os.getcwd()}/tmp")
+    updated = True
 
 
 subprocess.call(["clear"])
-print(f"{color.green}SNK Updater Ver. Alpha 1.0")
+print(f"{color.green}SNK Updater Ver. Alpha 1.1")
 time.sleep(1)
 
 if update_check():
     update()
 
-if update():
+if updated:
     print(color.green)
     print("Update successful! Closing the script...")
     print("NOTE: You need to run loader.py manually!")
