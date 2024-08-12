@@ -109,7 +109,7 @@ class initScripts:
 
 
 subprocess.call(["clear"])
-print(f"{color.green}SNK Loader Ver. Alpha 1.0")
+print(f"{color.green}SNK Loader Ver. Alpha 1.1")
 time.sleep(1)
 
 print("Cheking system...")
