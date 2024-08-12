@@ -26,7 +26,7 @@ print("\nCollection of scripts for various network tasks")
 print(f"Release: Ver. Alpha 1.1\nRemember to run 'pkgman check' every week!\n")
 
 class SNK_Shell(cmd.Cmd):
-    intro = f"SwissNetKnife Shell\n(C) TeamSNK. All rights reserved\n"
+    intro = f"SwissNetKnife Shell\n(C) Werameli (TeamSNK). All rights reserved\n"
     prompt = "SNK@localhost $>"
 
     def do_help(self, arg):
@@ -71,6 +71,9 @@ class SNK_Shell(cmd.Cmd):
                     exit(0)
                 else:
                     pass
+
+            case "install":
+                print("THIS FEATURE IS NOT AVAILABLE YET\n")
 
             case _:
                 print("Available commands:")

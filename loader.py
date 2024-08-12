@@ -5,6 +5,7 @@ import requests
 import lib.resolution as resolution
 import lib.color as color
 import subprocess
+import updater
 
 filename = "SNK.py"
 libraries = ["ascii.py", "color.py", "resolution.py"]
@@ -28,18 +29,13 @@ class rescuemode:
             inputstring = input("rescuemode | $ ")
             match inputstring:
                 case "help":
+                    print("WARNING: If you haven't got updater.py this script won't help you as it's necessary to it")
                     print("AVAILABLE COMMANDS:")
                     print("help - get this page")
-                    print("rescuescript - redownload script file")
-                    print("rescuelib - redownload libraries")
-                    print("rescueall - redownload all necessary files")
+                    print("rescue - redownload all script files")
                     print("exit - exit rescue mode")
-                case "rescuescript":
-                    pass
-                case "rescuelib":
-                    pass
-                case "rescueall":
-                    pass
+                case "rescue":
+                    updater.update()
                 case "exit":
                     exit(0)
                 case _:
@@ -109,7 +105,7 @@ class initScripts:
 
 if __name__ == "__main__":
     subprocess.call(["clear"])
-    print(f"{color.green}SNK Loader Ver. Alpha 1.1")
+    print(f"{color.green}SNK Loader Ver. Alpha 1.1.1\n(C) Werameli (TeamSNK). All rights reserved")
     time.sleep(1)
 
     print("Cheking system...")
