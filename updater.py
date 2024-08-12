@@ -57,16 +57,16 @@ def update():
     print("Updating files...")
     try:
         os.remove(f"{os.getcwd()}/SNK.py")
-        os.rmdir(f"{os.getcwd()}/lib")
+        shutil.rmtree(f"{os.getcwd()}/lib")
         os.remove(f"{os.getcwd()}/.version")
         os.remove(f"{os.getcwd()}/loader.py")
 
         with zipfile.ZipFile(f"{os.getcwd()}/tmp/lib.zip", 'r') as zip_ref:
             zip_ref.extractall(os.getcwd())
             zip_ref.close()
-        shutil.move("SNK.py", f"{os.getcwd()}")
-        shutil.move(".version", f"{os.getcwd()}")
-        shutil.move("loader.py", f"{os.getcwd()}")
+        shutil.move(f"{os.getcwd()}/tmp/SNK.py", f"{os.getcwd()}")
+        shutil.move(f"{os.getcwd()}/tmp/.version", f"{os.getcwd()}")
+        shutil.move(f"{os.getcwd()}/tmp/loader.py", f"{os.getcwd()}")
     except shutil.Error or zipfile.BadZipFile as error:
         print(color.red)
         print(error)
@@ -74,18 +74,17 @@ def update():
         print("Please, contact our developer team to solve the issue!")
         exit(0)
 
-    os.rmdir(f"{os.getcwd()}/tmp")
-    updated = True
+    shutil.rmtree(f"{os.getcwd()}/tmp")
+    print(color.green)
+    print("Update successful! Closing the script...")
+    print("NOTE: You need to run loader.py manually!")
+    exit()
 
 
 subprocess.call(["clear"])
 print(f"{color.green}SNK Updater Ver. Alpha 1.1")
 time.sleep(1)
 
-if update_check():
-    update()
-
-if updated:
-    print(color.green)
-    print("Update successful! Closing the script...")
-    print("NOTE: You need to run loader.py manually!")
+if __name__ == "__main__":
+    if update_check():
+        update()
