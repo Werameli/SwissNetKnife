@@ -1,6 +1,6 @@
 # SwissNetKnife
 ## Ultimate lightweight scriptholder for all your scripts
-## The main target of this project is to create minimal shell based on Python, that can store all your scripts in plugins. You can expand this shell by various network related plugins (and maybe in future not only network related)
+## The main target of this project is to create minimal script on Python that replicates unix-like shell, that can store all your scripts in plugins. You can expand this shell by various network related plugins (and maybe in future not only network related)
 
 ### Made by TeamSNK (Werameli)
 
