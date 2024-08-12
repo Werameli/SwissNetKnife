@@ -62,7 +62,7 @@ def update():
 
 
 subprocess.call(["clear"])
-print(f"{color.green}SNK Updater Ver. Alpha 1.0")
+print(f"{color.green}SNK Updater Ver. Alpha 1.1")
 time.sleep(1)
 
 if update_check():
