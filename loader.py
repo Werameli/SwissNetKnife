@@ -107,28 +107,28 @@ class initScripts:
                 rescuemode.terminal()
         time.sleep(0.5)
 
+if __name__ == "__main__":
+    subprocess.call(["clear"])
+    print(f"{color.green}SNK Loader Ver. Alpha 1.1")
+    time.sleep(1)
 
-subprocess.call(["clear"])
-print(f"{color.green}SNK Loader Ver. Alpha 1.1")
-time.sleep(1)
+    print("Cheking system...")
+    initScripts.syscheck()
 
-print("Cheking system...")
-initScripts.syscheck()
+    print("Checking terminal resolution...")
+    initScripts.rescheck()
 
-print("Checking terminal resolution...")
-initScripts.rescheck()
+    print("Checking script file availability...")
+    initScripts.filecheck()
 
-print("Checking script file availability...")
-initScripts.filecheck()
+    print("Cheking libraries integrity...")
+    initScripts.libcheck()
 
-print("Cheking libraries integrity...")
-initScripts.libcheck()
-
-print("\n")
-for i in range(5):
-    time.sleep(0.1)
-    print("\033[1;32;40mLOADING SWISSNETKNIFE...")
-time.sleep(1)
-os.environ['LOADED'] = str(True)
-subprocess.run(["python3", "SNK.py"], check=False)
-exit(0)
+    print("\n")
+    for i in range(5):
+        time.sleep(0.1)
+        print("\033[1;32;40mLOADING SWISSNETKNIFE...")
+    time.sleep(1)
+    os.environ['LOADED'] = str(True)
+    subprocess.run(["python3", "SNK.py"], check=False)
+    exit(0)
