@@ -2,12 +2,11 @@ import os.path
 import platform
 import time
 import requests
-import lib.resolution as resolution
-import lib.color as color
 import subprocess
 import updater
+from lib import color, resolution
 
-filename = "../SNK.py"
+filename = "SNK.py"
 libraries = ["ascii.py", "color.py", "resolution.py"]
 loaded = False
 
@@ -94,7 +93,7 @@ class initScripts:
     @staticmethod
     def libcheck():
         for library in libraries:
-            libfolder = os.path.join("../lib", library)
+            libfolder = os.path.join("lib", library)
             if os.path.isfile(libfolder):
                 pass
             else:

@@ -1,16 +1,16 @@
+import os.path
 import urllib.request
 import subprocess
 import requests
 import shutil
-import lib.color as color
 import time
 import zipfile
-import os
+from lib import color
 
 updated = False
 
 def update_check():
-    versionfile = open("../.version", "r")
+    versionfile = open(".version", "r")
     version = versionfile.read()
     versionfile.close()
     repoversion = requests.get("https://raw.githubusercontent.com/Werameli/SwissNetKnife/master/.version").text

@@ -4,8 +4,7 @@ import requests
 import subprocess
 import time
 
-import lib.ascii as art
-import lib.color as color
+from lib import color as color, ascii as art
 
 subprocess.call(["clear"])
 
