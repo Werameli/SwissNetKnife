@@ -23,10 +23,10 @@ art.menuart()
 art.borderstripe()
 
 print("\nCollection of scripts for various network tasks")
-print("Release: Ver. Alpha 1.1\n")
+print(f"Release: Ver. Alpha 1.1\nRemember to run 'pkgman check' every week!\n")
 
 class SNK_Shell(cmd.Cmd):
-    intro = "SwissNetKnife Shell\n(C) TeamSNK. All rights reserved\n"
+    intro = f"SwissNetKnife Shell\n(C) TeamSNK. All rights reserved\n"
     prompt = "SNK@localhost $>"
 
     def do_help(self, arg):
