@@ -32,7 +32,7 @@ def update():
 
     print("Retrieving and updating SNK.py")
     try:
-        urllib.request.urlretrieve("https://placeholder.com/repo/public/SNK", "SNK.py")
+        urllib.request.urlretrieve("https://raw.githubusercontent.com/Werameli/SwissNetKnife/master/SNK.py", "SNK.py")
     except urllib.request.HTTPError:
         print(color.red)
         print("Fatal error occured while downloading update!")
@@ -41,7 +41,7 @@ def update():
 
     print("Retrieving libraries...")
     try:
-        urllib.request.urlretrieve("https://placeholder.com/repo/public/lib.zip", "lib.zip")
+        urllib.request.urlretrieve("https://raw.githubusercontent.com/Werameli/SwissNetKnife/master/lib.zip", "lib.zip")
     except urllib.request.HTTPError:
         print(color.red)
         print("Fatal error occured while downloading update!")
