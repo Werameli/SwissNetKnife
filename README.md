@@ -18,8 +18,8 @@
 - pre-Beta 1.4 - Update Community (Added code injection from plugins to main script) - 8/13/2024
 - pre-Beta 1.5 - Update Community (Minor bugfixes + recoded initialization function) - 8/13/2024
 - pre-Beta 1.6 - Update Community (Unload function was replaced with reload function (FUNCTION DELAYED TILL 1.x)) - 8/13/2024
-- pre-Beta 1.7 - Update Filepsycho (Added config file and config system itself) - 8/14/2024
-- pre-Beta 1.8 - Update Rebase (Code optimization + minor bug fixes) - 8/14/2024
-- Beta 1.0 - Beta Debut (Added plugin system + added configs + code optimization) - 8/14/2024
-- Beta 1.1 - Update GrandFinale (Write documentation for plugin system) - ??/??/????
-- Release 1.0 - Release - ??/??/????
+- pre-Beta 1.7 - Update Filepsycho (Added config file and config system itself) - ??/??/2024
+- pre-Beta 1.8 - Update Rebase (Code optimization + minor bug fixes) - ??/??/2024
+- Beta 1.0 - Beta Debut (Added plugin system + added configs + code optimization) - ??/??/2024
+- Beta 1.1 - Update GrandFinale (Write documentation for plugin system) - ??/??/2024
+- Release 1.0 - Release - ??/??/2024
