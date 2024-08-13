@@ -11,16 +11,17 @@
 - Alpha 1.0 - Initial release (Created shell, loader, updater) - 8/12/2024
 - Alpha 1.1 - Patch (Fixed copyrights, added rescuemode, fixed update.py) - 8/12/2024
 - Alpha 1.1.1 (GitHub) - GH Update (Added README.md, now commits are readable) - 8/12/2024
-- pre-Beta 1.0 - Update Community (Started developing of plugin system) - 8/13/2024
-- pre-Beta 1.1 - Update Community (Major patch to 1.0) - 8/13/2024
-- pre-Beta 1.2 - Update Community (Small patch to 1.1 + added 'repoadd' command) - 8/13/2024
-- pre-Beta 1.3 - Update Community (Minor bugfixes + added 'plugman unload' command) - 8/13/2024
-- pre-Beta 1.4 - Update Community (Added code injection from plugins to main script) - 8/13/2024
-- pre-Beta 1.5 - Update Community (Minor bugfixes + recoded initialization function) - 8/13/2024
-- pre-Beta 1.6 - Update Community (Unload function was replaced with reload function (FUNCTION REMOVED IN 1.6.1 DUE TO VULNERABILITY)) - 8/13/2024
-- pre-Beta 1.6.1 Update Community (Reload function removed + plugin system update) - 8/13/2024
-- pre-Beta 1.7 - Update Filepsycho (Added config file and config system itself) - ??/??/2024
-- pre-Beta 1.8 - Update Rebase (Code optimization + minor bug fixes) - ??/??/2024
-- Beta 1.0 - Beta Debut (Added plugin system + added configs + code optimization) - ??/??/2024
-- Beta 1.1 - Update GrandFinale (Write documentation for plugin system) - ??/??/2024
-- Release 1.0 - Release - ??/??/2024
+- pre-Beta 1.2 - Update Community (Started developing of plugin system) - 8/13/2024
+- pre-Beta 1.3 - Update Community (Major patch to 1.0) - 8/13/2024
+- pre-Beta 1.4 - Update Community (Small patch to 1.1 + added 'repoadd' command) - 8/13/2024
+- pre-Beta 1.5 - Update Community (Minor bugfixes + added 'plugman unload' command) - 8/13/2024
+- pre-Beta 1.6 - Update Community (Added code injection from plugins to main script) - 8/13/2024
+- pre-Beta 1.7 - Update Community (Minor bugfixes + recoded initialization function) - 8/13/2024
+- pre-Beta 1.8 - Update Community (Unload function was replaced with reload function (FUNCTION REMOVED IN 1.6.1 DUE TO VULNERABILITY)) - 8/13/2024
+- pre-Beta 1.8.1 Update Community (Reload function removed + plugin system update) - 8/13/2024
+- pre-Beta 1.9 - Update Rebase (Code optimization + minor bug fixes) - 8/14/2024
+- Beta 1.10 - Beta Debut (Added plugin system + code optimization) - 8/14/2024
+- Beta 1.11 - Update Art (Improve ascii.py to show all loaded plugins) - ??/??/????
+- Beta 1.12 - Update GrandFinale (Write documentation) - ??/??/????
+- pre-Release 1.13 - Update GrandFinale pt.2 (Make setup.py and requirements.txt)
+- Release 1.0 - Release - ??/??/????
