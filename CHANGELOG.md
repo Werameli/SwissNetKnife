@@ -39,3 +39,7 @@
 - Recompiled lib.zip
 - Unload was replaced with reload (FUNCTION DELAYED)
 - Closer and closer to Beta 1.0
+
+## pre-Beta 1.6.1
+- Recompiled lib.zip
+- Reload removed

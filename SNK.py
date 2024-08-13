@@ -80,10 +80,6 @@ class SNK_Shell(cmd.Cmd):
                         print("Installation aborted!")
                 else:
                     print("Repolist is empty! Consider adding repositories via 'plugman repoadd'")
-            case "reload":
-                print("Out of order!")
-                print("Sorry!")
-                # plugman.reload_plugins()
             case "list":
                 plugman.loaded_list()
             case "repoadd":
@@ -93,7 +89,6 @@ class SNK_Shell(cmd.Cmd):
             case _:
                 print("Available commands:")
                 print("install - install various plugins")
-                print("reload - reload plugins from it's folder")
                 print("list - shows a list of all loaded plugins")
                 print("repoadd - add plugins repositories to the repolist\n")
 
