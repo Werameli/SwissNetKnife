@@ -13,5 +13,6 @@
 - pre-Beta 1.0 - Update Community (Started developing of plugin system) - 8/13/2024
 - pre-Beta 1.1 - Update Community (Major patch to 1.0) - 8/13/2024
 - pre-Beta 1.2 - Update Community (Small patch to 1.1 + added 'repoadd' command) - 8/13/2024
-- Beta 1.0 - Update Community (Added plugin system) - 8/14/2024
+- pre-Beta 1.3 - Update Community (Minor bugfixes + added 'plugman unload' command)
+- Beta 1.0 - Update Community (Added plugin system) - 8/??/2024
 - Beta 1.1 - Patch (Cubical Demolition is now a plugin) - 8/??/2024

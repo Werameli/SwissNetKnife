@@ -3,7 +3,7 @@ import time
 import requests
 import os
 import importlib.util
-# import sys
+import sys
 from datetime import datetime
 
 loaded_plugins = {}
@@ -137,25 +137,24 @@ def add_repository(reponame, repourl):
 
     print(f"Repository '{reponame}' added successfully!")
 
+def unload_plugin(plugin_name):
+    if plugin_name in loaded_plugins:
+        module = loaded_plugins[plugin_name]
+        print(f"Unloading plugin: {plugin_name}\n")
+        if hasattr(module, "cleanup"):
+            module.cleanup()
+        if plugin_name in sys.modules:
+            del sys.modules[plugin_name]
+        del loaded_plugins[plugin_name]
+        print(f"\nPlugin '{plugin_name}' has been unloaded.")
 
-# def unload_plugin(plugin_name):
-#     module = loaded_plugins.get(plugin_name)
-#     if module:
-#         print(f"Unloading plugin: {plugin_name}")
-#         if hasattr(module, "cleanup"):
-#             module.cleanup()
-#         del sys.modules[plugin_name]
-#         del loaded_plugins[plugin_name]
-#         print(f"Plugin '{plugin_name}' has been unloaded.")
-#
-#
-# def unloader(plugin_name):
-#     global loaded_plugins
-#
-#     if plugin_name == "all":
-#         for plugin_name in list(loaded_plugins.keys()):
-#             unload_plugin(plugin_name)
-#     elif plugin_name in loaded_plugins:
-#         unload_plugin(plugin_name)
-#     else:
-#         print(f"Plugin '{plugin_name}' is not loaded.")
+def unloader(plugin_name):
+    global loaded_plugins
+
+    if plugin_name == "all":
+        for plugin_name in list(loaded_plugins.keys()):
+            unload_plugin(plugin_name)
+    elif plugin_name in loaded_plugins:
+        unload_plugin(plugin_name)
+    else:
+        print(f"Plugin '{plugin_name}' is not loaded or has already been unloaded.")

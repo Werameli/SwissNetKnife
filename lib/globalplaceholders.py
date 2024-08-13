@@ -1,1 +1,3 @@
-version = "pre-Beta 1.2"
+with open(".version", "r") as file:
+    version = file.read()
+    file.close()

@@ -142,7 +142,7 @@ if __name__ == "__main__":
     time.sleep(1)
     os.environ['LOADED'] = str(True)
     try:
-        subprocess.run(["python3", "SNK.py"], check=False) #, stderr=subprocess.DEVNULL)
+        subprocess.run(["python3", "SNK.py"], check=False, stderr=subprocess.DEVNULL)
     except KeyboardInterrupt:
         subprocess.call(["clear"])
         print("Detected CTRL+C! Exiting...")

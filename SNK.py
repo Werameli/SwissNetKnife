@@ -80,9 +80,9 @@ class SNK_Shell(cmd.Cmd):
                         print("Installation aborted!")
                 else:
                     print("Repolist is empty! Consider adding repositories via 'plugman repoadd'")
-            # case "unload":
-            #     user_input = input("Enter the name of the plugin to unload (or 'all' to unload all): ")
-            #     plugman.unloader(user_input)
+            case "unload":
+                user_input = input("Enter the name of the plugin to unload (or 'all' to unload all): ")
+                plugman.unloader(user_input)
             case "list":
                 plugman.loaded_list()
             case "repoadd":
