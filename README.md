@@ -17,7 +17,7 @@
 - pre-Beta 1.5 - Update Community (Minor bugfixes + added 'plugman unload' command) - 8/13/2024
 - pre-Beta 1.6 - Update Community (Added code injection from plugins to main script) - 8/13/2024
 - pre-Beta 1.7 - Update Community (Minor bugfixes + recoded initialization function) - 8/13/2024
-- pre-Beta 1.8 - Update Community (Unload function was replaced with reload function (FUNCTION REMOVED IN 1.6.1 DUE TO VULNERABILITY)) - 8/13/2024
+- pre-Beta 1.8 - Update Community (Unload function was replaced with reload function (FUNCTION REMOVED IN 1.8.1 DUE TO VULNERABILITY)) - 8/13/2024
 - pre-Beta 1.8.1 Update Community (Reload function removed + plugin system update) - 8/13/2024
 - pre-Beta 1.9 - Update Rebase (Code optimization + minor bug fixes) - 8/14/2024
 - Beta 1.10 - Beta Debut (Added plugin system + code optimization) - 8/14/2024
