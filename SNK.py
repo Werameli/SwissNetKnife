@@ -4,7 +4,7 @@ import requests
 import subprocess
 import time
 
-from lib import color as color, ascii as art
+from lib import color as color, ascii as art, pluginManager as plugman
 
 subprocess.call(["clear"])
 
@@ -72,13 +72,20 @@ class SNK_Shell(cmd.Cmd):
                     pass
 
             case "install":
-                print("THIS FEATURE IS NOT AVAILABLE YET\n")
+                if plugman.ifrepoexists():
+                    print("Reading repolist...")
+                else:
+                    print("Repolist is empty! Consider adding repositories via 'plugman repoadd'")
+
+            case "repoadd":
+                pass
 
             case _:
                 print("Available commands:")
                 print("check - check is there's a newer version of a script")
                 print("update - start update process if there's a newer version of a script")
-                print("(UNRELEASED) install - install various plugins")
+                print("repoadd - add plugins repositories to the repolist")
+                print("install - install various plugins")
 
     def do_restart(self, arg):
         print("Restarting...")
