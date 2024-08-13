@@ -23,4 +23,3 @@
 - Beta 1.10 (GitHub) - Update GrandFinale (Write documentation) - 8/14/2024
 - pre-Release 1.11 - Update GrandFinale pt.2 (Make setup.py + code cleanup and optimization) - 8/15/2024
 - Release 1.0 - Release + Update Finalis (Final patches to beta code) - ??/??/????
-- Release 1.1 - Update Art Redux (Bring back improved ascii art pluginlist)
