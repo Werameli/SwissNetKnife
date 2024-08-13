@@ -116,8 +116,6 @@ def initialization(shell_instance):
 
                 print(f"Loading plugin: {plugin_name}")
 
-                plug_info_instance.init()
-
                 inject_shell_commands(shell_instance, module)
 
                 print(f"Plugin '{plugin_name}' loaded successfully.")
