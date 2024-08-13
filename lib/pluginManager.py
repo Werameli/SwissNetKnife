@@ -135,13 +135,8 @@ def add_repository(reponame, repourl):
     with open(json_file_path, 'w') as file:
         json.dump(data, file, indent=4)
 
-    print(f"Repository '{repo_name}' added successfully!")
+    print(f"Repository '{reponame}' added successfully!")
 
-
-# Example usage
-repo_name = "Repo3"
-repo_url = "https://github.com/user/repo3"
-add_repository(repo_name, repo_url)
 
 # def unload_plugin(plugin_name):
 #     module = loaded_plugins.get(plugin_name)
