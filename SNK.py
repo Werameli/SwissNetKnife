@@ -59,7 +59,7 @@ class SNK_Shell(cmd.Cmd):
             case _:
                 print("Available commands:")
                 print("check - check is there's a newer version of a script")
-                print("update - start update process if there's a newer version of a script")
+                print("update - start update process if there's a newer version of a script\n")
 
     def do_plugman(self, arg):
         global result
@@ -80,18 +80,21 @@ class SNK_Shell(cmd.Cmd):
                         print("Installation aborted!")
                 else:
                     print("Repolist is empty! Consider adding repositories via 'plugman repoadd'")
-            case "unload":
-                pass
+            # case "unload":
+            #     user_input = input("Enter the name of the plugin to unload (or 'all' to unload all): ")
+            #     plugman.unloader(user_input)
             case "list":
                 plugman.loaded_list()
             case "repoadd":
-                pass
+                reponame = input("Insert repository name: ")
+                repourl = input("Insert repository url:")
+                plugman.add_repository(reponame, repourl)
             case _:
                 print("Available commands:")
                 print("install - install various plugins")
-                print("unload - unload plugin(s)")
+                print("(UNFINISHED) unload - unload plugin(s)")
                 print("list - shows a list of all loaded plugins")
-                print("repoadd - add plugins repositories to the repolist")
+                print("repoadd - add plugins repositories to the repolist\n")
 
 
     @staticmethod

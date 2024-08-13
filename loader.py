@@ -29,12 +29,16 @@ class rescuemode:
             match inputstring:
                 case "help":
                     print("WARNING: If you haven't got updater.py this script won't help you as it's necessary to it")
+                    print("NOTE: If you missing repolist.json file, just run 'repocreate'. However if you're missing .version file you need to run 'rescue' command")
                     print("AVAILABLE COMMANDS:")
                     print("help - get this page")
                     print("rescue - redownload all script files")
+                    print("repocreate - create empty repolist.json")
                     print("exit - exit rescue mode")
                 case "rescue":
                     updater.update()
+                case "repocreate":
+                    os.mknod("repolist.json")
                 case "exit":
                     exit(0)
                 case _:
@@ -102,6 +106,16 @@ class initScripts:
                 rescuemode.terminal()
         time.sleep(0.5)
 
+    @staticmethod
+    def adcheck():
+        if os.path.isfile(".version") and os.path.isfile("repolist.json"):
+            pass
+        else:
+            print(f"{color.red}Critical error! repolist.json or .version not found!")
+            print("Entering rescue mode!")
+            rescuemode.terminal()
+        time.sleep(0.5)
+
 if __name__ == "__main__":
     subprocess.call(["clear"])
     print(f"{color.green}SNK Loader Ver. Alpha 1.1.1\n(C) Werameli (TeamSNK). All rights reserved")
@@ -116,8 +130,10 @@ if __name__ == "__main__":
     print("Checking script file availability...")
     initScripts.filecheck()
 
-    print("Cheking libraries integrity...")
+    print("Checking libraries integrity...")
     initScripts.libcheck()
+
+    print("Checking additional files integrity")
 
     print("\n")
     for i in range(5):
@@ -126,7 +142,7 @@ if __name__ == "__main__":
     time.sleep(1)
     os.environ['LOADED'] = str(True)
     try:
-        subprocess.run(["python3", "SNK.py"], check=False, stderr=subprocess.DEVNULL)
+        subprocess.run(["python3", "SNK.py"], check=False) #, stderr=subprocess.DEVNULL)
     except KeyboardInterrupt:
         subprocess.call(["clear"])
         print("Detected CTRL+C! Exiting...")

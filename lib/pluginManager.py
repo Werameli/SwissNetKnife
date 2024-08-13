@@ -3,7 +3,8 @@ import time
 import requests
 import os
 import importlib.util
-import sys
+# import sys
+from datetime import datetime
 
 loaded_plugins = {}
 
@@ -112,13 +113,54 @@ def loaded_list():
     else:
         print("No plugins were loaded.")
 
-def unload_plugins():
-    global loaded_plugins
-    for plugin_name, module in loaded_plugins.items():
-        print(f"Unloading plugin: {plugin_name}")
-        if hasattr(module, "cleanup"):
-            module.cleanup()  # Optionally, call a cleanup method if your plugins have one
-        del sys.modules[plugin_name]  # Remove from sys.modules
-        del module  # Delete the module reference
-    loaded_plugins.clear()
-    print("All plugins have been unloaded.")
+
+def add_repository(reponame, repourl):
+    json_file_path = 'repolist.json'
+
+    if os.path.exists(json_file_path):
+        with open(json_file_path, 'r') as file:
+            data = json.load(file)
+    else:
+        data = {"repositories": []}
+
+
+    new_repo = {
+        "name": reponame,
+        "url": repourl,
+        "created_at": datetime.now().strftime("%Y-%d-%m")
+    }
+
+    data["repositories"].append(new_repo)
+
+    with open(json_file_path, 'w') as file:
+        json.dump(data, file, indent=4)
+
+    print(f"Repository '{repo_name}' added successfully!")
+
+
+# Example usage
+repo_name = "Repo3"
+repo_url = "https://github.com/user/repo3"
+add_repository(repo_name, repo_url)
+
+# def unload_plugin(plugin_name):
+#     module = loaded_plugins.get(plugin_name)
+#     if module:
+#         print(f"Unloading plugin: {plugin_name}")
+#         if hasattr(module, "cleanup"):
+#             module.cleanup()
+#         del sys.modules[plugin_name]
+#         del loaded_plugins[plugin_name]
+#         print(f"Plugin '{plugin_name}' has been unloaded.")
+#
+#
+# def unloader(plugin_name):
+#     global loaded_plugins
+#
+#     if plugin_name == "all":
+#         for plugin_name in list(loaded_plugins.keys()):
+#             unload_plugin(plugin_name)
+#     elif plugin_name in loaded_plugins:
+#         unload_plugin(plugin_name)
+#     else:
+#         print(f"Plugin '{plugin_name}' is not loaded.")
