@@ -19,9 +19,8 @@
 - pre-Beta 1.7 - Update Community (Minor bugfixes + recoded initialization function) - 8/13/2024
 - pre-Beta 1.8 - Update Community (Unload function was replaced with reload function (FUNCTION REMOVED IN 1.8.1 DUE TO VULNERABILITY)) - 8/13/2024
 - pre-Beta 1.8.1 Update Community (Reload function removed + plugin system update) - 8/13/2024
-- pre-Beta 1.9 - Update Rebase (Code optimization + minor bug fixes) - 8/14/2024
-- Beta 1.10 - Beta Debut (Added plugin system + code optimization) - 8/14/2024
-- Beta 1.11 - Update Art (Improve ascii.py to show all loaded plugins) - ??/??/????
-- Beta 1.12 - Update GrandFinale (Write documentation) - ??/??/????
-- pre-Release 1.13 - Update GrandFinale pt.2 (Make setup.py and requirements.txt)
+- Beta 1.9 - Beta Debut (Added full version of plugin system, remove pluginlist ascii art because of new plugin system) - 8/14/2024
+- Beta 1.10 - Update GrandFinale (Write documentation) - 8/15/2024
+- pre-Release 1.12 - Update GrandFinale pt.2 (Make setup.py + code cleanup and optimization) - 8/15/2024
 - Release 1.0 - Release - ??/??/????
+- Release 1.1 - Update Art Redux (Bring back improved ascii art pluginlist)

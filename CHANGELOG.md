@@ -42,4 +42,4 @@
 
 ## pre-Beta 1.8.1
 - Recompiled lib.zip
-- Reload removed
+- Reload function removed
