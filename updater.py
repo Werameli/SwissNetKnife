@@ -6,6 +6,7 @@ import shutil
 import time
 import zipfile
 from lib import color
+from lib import globalplaceholders as gph
 
 updated = False
 
@@ -83,7 +84,7 @@ def update():
 
 if __name__ == "__main__":
     subprocess.call(["clear"])
-    print(f"{color.green}SNK Updater Ver. Alpha 1.1\n(C) Werameli (TeamSNK). All rights reserved")
+    print(f"{color.green}SNK Updater Ver. {gph.version}\n(C) Werameli (TeamSNK). All rights reserved")
     time.sleep(1)
 
     if update_check():

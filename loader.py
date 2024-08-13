@@ -4,7 +4,7 @@ import time
 import requests
 import subprocess
 import updater
-from lib import color, resolution
+from lib import color, resolution, globalplaceholders as gph
 
 filename = "SNK.py"
 libraries = ["ascii.py", "color.py", "resolution.py", "pluginManager.py"]
@@ -118,7 +118,7 @@ class initScripts:
 
 if __name__ == "__main__":
     subprocess.call(["clear"])
-    print(f"{color.green}SNK Loader Ver. Alpha 1.1.1\n(C) Werameli (TeamSNK). All rights reserved")
+    print(f"{color.green}SNK Loader Ver. {gph.version}\n(C) Werameli (TeamSNK). All rights reserved")
     time.sleep(1)
 
     print("Cheking system...")

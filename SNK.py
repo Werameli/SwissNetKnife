@@ -4,7 +4,7 @@ import requests
 import subprocess
 import time
 
-from lib import color as color, ascii as art, pluginManager as plugman
+from lib import color as color, ascii as art, pluginManager as plugman, globalplaceholders as gph
 
 class SNK_Shell(cmd.Cmd):
     intro = f"SwissNetKnife Shell\n(C) Werameli (TeamSNK). All rights reserved\n"
@@ -140,5 +140,5 @@ if __name__ == '__main__':
     art.borderstripe()
 
     print("\nCollection of scripts for various network tasks")
-    print(f"Release: Ver. Alpha 1.1\nRemember to run 'pkgman check' every week!\n")
+    print(f"Release: Ver. {gph.version}\nRemember to run 'pkgman check' every week!\n")
     SNK_Shell().cmdloop()

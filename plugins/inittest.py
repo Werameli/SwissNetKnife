@@ -1,8 +1,10 @@
+import lib.globalplaceholders as gph
+
 def SNKInit():
     return {
         "name": "PluginExample",
         "vendor": "Werameli",
-        "version": "pre-Beta 1.1",
+        "version": gph.version,
         "description": "Example plugin with simple functions and init function"
     }
 
