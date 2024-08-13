@@ -82,7 +82,7 @@ class SNK_Shell(cmd.Cmd):
                     print("Repolist is empty! Consider adding repositories via 'plugman repoadd'")
             case "unload":
                 user_input = input("Enter the name of the plugin to unload (or 'all' to unload all): ")
-                plugman.unloader(user_input)
+                plugman.unloader(user_input, shell)
             case "list":
                 plugman.loaded_list()
             case "repoadd":
@@ -119,6 +119,7 @@ class SNK_Shell(cmd.Cmd):
 
 
 if __name__ == '__main__':
+    shell = SNK_Shell()
     subprocess.call(["clear"])
 
     if os.getenv("LOADED") == "True":
@@ -130,7 +131,7 @@ if __name__ == '__main__':
 
     print("Initializing plugins...")
     time.sleep(2)
-    plugman.initialization()
+    plugman.initialization(shell)
     subprocess.call(["clear"])
 
     art.borderstripe()
@@ -141,4 +142,4 @@ if __name__ == '__main__':
 
     print("\nCollection of scripts for various network tasks")
     print(f"Release: Ver. {gph.version}\nRemember to run 'pkgman check' every week!\n")
-    SNK_Shell().cmdloop()
+    shell.cmdloop()

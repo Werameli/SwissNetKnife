@@ -71,7 +71,20 @@ def installation(file_url, destination_folder = "plugins"):
     else:
         print(f"\nFailed to download {file_name}: {response.status_code}")
 
-def initialization():
+
+def inject_shell_commands(shell_instance, module):
+    if hasattr(module, 'ShellIntegrations'):
+        shell_integrations_class = getattr(module, 'ShellIntegrations')
+        shell_integrations_instance = shell_integrations_class()
+
+        for attr_name in dir(shell_integrations_instance):
+            attr = getattr(shell_integrations_instance, attr_name)
+            if callable(attr) and hasattr(attr, '_is_shell_command'):
+                command_name = attr_name
+                setattr(shell_instance.__class__, command_name, attr)
+                print(f"Injected command: {command_name}")
+
+def initialization(shell_instance):
     plugin_folder = 'plugins'
     metadata_function = "SNKInit"
 
@@ -89,20 +102,26 @@ def initialization():
                 module = importlib.util.module_from_spec(spec)
                 spec.loader.exec_module(module)
 
-                if hasattr(module, metadata_function):
-                    metadata = getattr(module, metadata_function)()
+                if hasattr(module, 'PlugInfo'):
+                    plug_info_class = getattr(module, 'PlugInfo')
+                    plug_info_instance = plug_info_class(shell_instance)
+                    loaded_plugins[module_name] = plug_info_instance
 
-                    print(f"Found plugin: {metadata['name']}")
-                    print(f"  Vendor: {metadata['vendor']}")
-                    print(f"  Version: {metadata['version']}")
-                    print(f"  Description: {metadata['description']}")
-                    print("\n")
-                    loaded_plugins[module_name] = module
+                    metadata = plug_info_instance.SNKInit()
+                    plugin_name = metadata.get("name", module_name)
+                    loaded_plugins[plugin_name] = plug_info_instance
+
+                    print(f"Loaded plugin: {plugin_name}\n")
+
+
+                    plug_info_instance.init()
+
+                    inject_shell_commands(shell_instance, module)
 
                     if hasattr(module, "init"):
                         module.init()
                 else:
-                    print(f"{filename} does not contain 'SNKInit' function. Skipping...")
+                    print(f"{filename} does not contain 'PlugInfo' function. Skipping...")
         time.sleep(2)
 
 def loaded_list():
@@ -111,7 +130,7 @@ def loaded_list():
         for plugin_name in loaded_plugins:
             print(f" - {plugin_name}")
     else:
-        print("No plugins were loaded.")
+        print("No plugins were loaded.\n")
 
 
 def add_repository(reponame, repourl):
@@ -137,24 +156,29 @@ def add_repository(reponame, repourl):
 
     print(f"Repository '{reponame}' added successfully!")
 
-def unload_plugin(plugin_name):
+def unload_plugin(plugin_name, shell_instance):
     if plugin_name in loaded_plugins:
         module = loaded_plugins[plugin_name]
-        print(f"Unloading plugin: {plugin_name}\n")
-        if hasattr(module, "cleanup"):
-            module.cleanup()
+        print(f"Unloading plugin: {plugin_name}")
+        if hasattr(module, "ShellIntegrations"):
+            shell_integrations_class = getattr(module, 'ShellIntegrations')
+            if hasattr(shell_integrations_class, 'cleanup'):
+                shell_integrations_class.cleanup(shell_instance)
+
         if plugin_name in sys.modules:
             del sys.modules[plugin_name]
         del loaded_plugins[plugin_name]
-        print(f"\nPlugin '{plugin_name}' has been unloaded.")
+        print(f"Plugin '{plugin_name}' has been unloaded.")
+    else:
+        print(f"Plugin '{plugin_name}' is not loaded.")
 
-def unloader(plugin_name):
+def unloader(plugin_name, shell_instance):
     global loaded_plugins
 
     if plugin_name == "all":
         for plugin_name in list(loaded_plugins.keys()):
-            unload_plugin(plugin_name)
+            unload_plugin(plugin_name, shell_instance)
     elif plugin_name in loaded_plugins:
-        unload_plugin(plugin_name)
+        unload_plugin(plugin_name, shell_instance)
     else:
         print(f"Plugin '{plugin_name}' is not loaded or has already been unloaded.")

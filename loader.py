@@ -114,11 +114,11 @@ class initScripts:
             print(f"{color.red}Critical error! repolist.json or .version not found!")
             print("Entering rescue mode!")
             rescuemode.terminal()
-        time.sleep(0.5)
+        time.sleep(1)
 
 if __name__ == "__main__":
     subprocess.call(["clear"])
-    print(f"{color.green}SNK Loader Ver. {gph.version}\n(C) Werameli (TeamSNK). All rights reserved")
+    print(f"{color.green}SNK Loader Ver. {gph.version}(C) Werameli (TeamSNK). All rights reserved\n")
     time.sleep(1)
 
     print("Cheking system...")
@@ -134,6 +134,7 @@ if __name__ == "__main__":
     initScripts.libcheck()
 
     print("Checking additional files integrity")
+    initScripts.adcheck()
 
     print("\n")
     for i in range(5):
@@ -142,7 +143,7 @@ if __name__ == "__main__":
     time.sleep(1)
     os.environ['LOADED'] = str(True)
     try:
-        subprocess.run(["python3", "SNK.py"], check=False, stderr=subprocess.DEVNULL)
+        subprocess.run(["python3", "SNK.py"], check=False) #, stderr=subprocess.DEVNULL)
     except KeyboardInterrupt:
         subprocess.call(["clear"])
         print("Detected CTRL+C! Exiting...")

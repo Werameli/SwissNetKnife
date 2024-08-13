@@ -24,3 +24,8 @@
 - Recompiled lib.zip
 - Added unload function
 - Recoded globalplaceholders.py
+
+## pre-Beta 1.4
+- Recompiled lib.zip
+- Added plugin's functions injection to shell
+- Unload is not working again (fixed in pre-Beta 1.5)
