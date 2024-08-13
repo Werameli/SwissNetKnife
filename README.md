@@ -15,6 +15,7 @@
 - pre-Beta 1.2 - Update Community (Small patch to 1.1 + added 'repoadd' command) - 8/13/2024
 - pre-Beta 1.3 - Update Community (Minor bugfixes + added 'plugman unload' command) - 8/13/2024
 - pre-Beta 1.4 - Update Community (Added code injection from plugins to main script) - 8/13/2024
-- pre-Beta 1.5 - Update Community (Fixed unload function) - 8/14/2024
+- pre-Beta 1.5 - Update Community (Minor bugfixes + recoded initialization function) - 8/13/2024
+- pre-Beta 1.6 - Update Community (Finally fixed unload function) - 8/14/2024
 - Beta 1.0 - Update Community (Added plugin system) - 8/??/2024
 - Beta 1.1 - Patch (Cubical Demolition is now a plugin) - 8/??/2024

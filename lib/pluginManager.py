@@ -84,44 +84,47 @@ def inject_shell_commands(shell_instance, module):
                 setattr(shell_instance.__class__, command_name, attr)
                 print(f"Injected command: {command_name}")
 
+
 def initialization(shell_instance):
-    plugin_folder = 'plugins'
-    metadata_function = "SNKInit"
-
+    global loaded_plugins
+    plugin_folder = "plugins"
     plugin_files = [f for f in os.listdir(plugin_folder) if f.endswith(".py") and f != "manager.py"]
+
     if not plugin_files:
-        print("No .py files were found in 'plugins' directory! Skipping...")
-        time.sleep(2)
+        print("No plugin files found in the 'plugins' directory. Skipping...")
     else:
-        for filename in os.listdir(plugin_folder):
-            if filename.endswith(".py"):
-                file_path = os.path.join(plugin_folder, filename)
-                module_name = filename[:-3]
+        for filename in plugin_files:
+            file_path = os.path.join(plugin_folder, filename)
+            module_name = filename[:-3] \
 
-                spec = importlib.util.spec_from_file_location(module_name, file_path)
-                module = importlib.util.module_from_spec(spec)
+            spec = importlib.util.spec_from_file_location(module_name, file_path)
+            module = importlib.util.module_from_spec(spec)
+
+            try:
                 spec.loader.exec_module(module)
+                print(f"Loaded module: {filename}")
+            except Exception as e:
+                print(f"Failed to load module: {filename} due to {e}")
+                continue
 
-                if hasattr(module, 'PlugInfo'):
-                    plug_info_class = getattr(module, 'PlugInfo')
-                    plug_info_instance = plug_info_class(shell_instance)
-                    loaded_plugins[module_name] = plug_info_instance
+            if hasattr(module, 'PlugInfo'):
+                plug_info_class = getattr(module, 'PlugInfo')
+                plug_info_instance = plug_info_class(shell_instance)
 
-                    metadata = plug_info_instance.SNKInit()
-                    plugin_name = metadata.get("name", module_name)
-                    loaded_plugins[plugin_name] = plug_info_instance
+                # Retrieve plugin name from metadata
+                metadata = plug_info_instance.SNKInit()
+                plugin_name = metadata.get("name", module_name)
+                loaded_plugins[plugin_name] = plug_info_instance
 
-                    print(f"Loaded plugin: {plugin_name}\n")
+                print(f"Loading plugin: {plugin_name}")
 
+                plug_info_instance.init()
 
-                    plug_info_instance.init()
+                inject_shell_commands(shell_instance, module)
 
-                    inject_shell_commands(shell_instance, module)
-
-                    if hasattr(module, "init"):
-                        module.init()
-                else:
-                    print(f"{filename} does not contain 'PlugInfo' function. Skipping...")
+                print(f"Plugin '{plugin_name}' loaded successfully.")
+            else:
+                print(f"{filename} does not contain 'PlugInfo' class. Skipping...")
         time.sleep(2)
 
 def loaded_list():

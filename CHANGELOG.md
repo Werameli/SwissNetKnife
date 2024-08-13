@@ -28,4 +28,9 @@
 ## pre-Beta 1.4
 - Recompiled lib.zip
 - Added plugin's functions injection to shell
-- Unload is not working again (fixed in pre-Beta 1.5)
+- Unload is not working again (fixed in pre-Beta 1.x???)
+
+## pre-Beta 1.5
+- Recompiled lib.zip
+- Recoded initialization process
+- Fixed pluginManager.py
