@@ -3,10 +3,11 @@ import time
 import requests
 import os
 import importlib.util
-import sys
+# import sys
 from datetime import datetime
 
 loaded_plugins = {}
+# filename = {}
 
 def readrepo():
     with open('repolist.json', 'r') as file:
@@ -82,13 +83,12 @@ def inject_shell_commands(shell_instance, module):
             if callable(attr) and hasattr(attr, '_is_shell_command'):
                 command_name = attr_name
                 setattr(shell_instance.__class__, command_name, attr)
-                print(f"Injected command: {command_name}")
 
 
 def initialization(shell_instance):
     global loaded_plugins
     plugin_folder = "plugins"
-    plugin_files = [f for f in os.listdir(plugin_folder) if f.endswith(".py") and f != "manager.py"]
+    plugin_files = [f for f in os.listdir(plugin_folder) if f.endswith(".py")]
 
     if not plugin_files:
         print("No plugin files found in the 'plugins' directory. Skipping...")
@@ -105,13 +105,13 @@ def initialization(shell_instance):
                 print(f"Loaded module: {filename}")
             except Exception as e:
                 print(f"Failed to load module: {filename} due to {e}")
+                time.sleep(4)
                 continue
 
             if hasattr(module, 'PlugInfo'):
                 plug_info_class = getattr(module, 'PlugInfo')
                 plug_info_instance = plug_info_class(shell_instance)
 
-                # Retrieve plugin name from metadata
                 metadata = plug_info_instance.SNKInit()
                 plugin_name = metadata.get("name", module_name)
                 loaded_plugins[plugin_name] = plug_info_instance
@@ -126,6 +126,58 @@ def initialization(shell_instance):
             else:
                 print(f"{filename} does not contain 'PlugInfo' class. Skipping...")
         time.sleep(2)
+
+# def reloader(plugin_name):
+#     plugin_folder = "plugins"
+#
+#     if plugin_name in loaded_plugins:
+#         plug_info_instance = loaded_plugins[plugin_name]
+#         print(f"Reloading plugin: {plugin_name}")
+#
+#         plug_info_instance.cleanup()
+#
+#         module_name = plug_info_instance.__class__.__module__
+#         del sys.modules[module_name]
+#         del loaded_plugins[plugin_name]
+#
+#         shell_instance = plug_info_instance.shell_instance
+#         file_path = os.path.join(plugin_folder, module_name + ".py")
+#
+#         spec = importlib.util.spec_from_file_location(module_name, file_path)
+#         module = importlib.util.module_from_spec(spec)
+#
+#         try:
+#             spec.loader.exec_module(module)
+#             print(f"Reloaded module: {module_name}.py")
+#         except Exception as e:
+#             print(f"Failed to reload module: {module_name}.py due to {e}")
+#             time.sleep(5)
+#             return
+#
+#         if hasattr(module, 'PlugInfo'):
+#             plug_info_class = getattr(module, 'PlugInfo')
+#             plug_info_instance = plug_info_class(shell_instance)
+#
+#             metadata = plug_info_instance.get_metadata()
+#             plugin_name = metadata.get("name", module_name)
+#             loaded_plugins[plugin_name] = plug_info_instance
+#
+#             print(f"Reloading plugin: {plugin_name}")
+#
+#             plug_info_instance.init()
+#
+#             inject_shell_commands(shell_instance, module)
+#
+#             print(f"Plugin '{plugin_name}' reloaded successfully.")
+#         else:
+#             print(f"{module_name}.py does not contain 'PlugInfo' class. Skipping...")
+#     else:
+#         print(f"Plugin '{plugin_name}' is not currently loaded.")
+#
+# def reload_plugins():
+#     global loaded_plugins
+#     for plugin_name in list(loaded_plugins.keys()):
+#         reloader(plugin_name)
 
 def loaded_list():
     print("\nLoaded plugins:")
@@ -158,30 +210,3 @@ def add_repository(reponame, repourl):
         json.dump(data, file, indent=4)
 
     print(f"Repository '{reponame}' added successfully!")
-
-def unload_plugin(plugin_name, shell_instance):
-    if plugin_name in loaded_plugins:
-        module = loaded_plugins[plugin_name]
-        print(f"Unloading plugin: {plugin_name}")
-        if hasattr(module, "ShellIntegrations"):
-            shell_integrations_class = getattr(module, 'ShellIntegrations')
-            if hasattr(shell_integrations_class, 'cleanup'):
-                shell_integrations_class.cleanup(shell_instance)
-
-        if plugin_name in sys.modules:
-            del sys.modules[plugin_name]
-        del loaded_plugins[plugin_name]
-        print(f"Plugin '{plugin_name}' has been unloaded.")
-    else:
-        print(f"Plugin '{plugin_name}' is not loaded.")
-
-def unloader(plugin_name, shell_instance):
-    global loaded_plugins
-
-    if plugin_name == "all":
-        for plugin_name in list(loaded_plugins.keys()):
-            unload_plugin(plugin_name, shell_instance)
-    elif plugin_name in loaded_plugins:
-        unload_plugin(plugin_name, shell_instance)
-    else:
-        print(f"Plugin '{plugin_name}' is not loaded or has already been unloaded.")

@@ -1,5 +1,5 @@
 import lib.globalplaceholders as gph
-from lib.decorator import shell_command
+from lib.decorator import shell_command, shell_remover
 
 class PlugInfo: # DO NOT REMOVE
     def __init__(self, shell_instance): # DO NOT REMOVE
@@ -15,17 +15,21 @@ class PlugInfo: # DO NOT REMOVE
         }
 
     def init(self): # DO NOT REMOVE
-        print(f"{self.SNKInit()['name']} initialized.")
+        pass
 
-
-    @staticmethod
-    def cleanup(cls, shell_instance): # DO NOT REMOVE
-        for command in cls.commands_to_remove:
-            if hasattr(shell_instance.__class__, command):
-                delattr(shell_instance.__class__, command)
-                print(f"Removed command: {command}")
+    def cleanup(self): # DO NOT REMOVE
+        shell_integrations_class = getattr(self, 'ShellIntegrations', None)
+        if shell_integrations_class:
+            commands_to_remove = shell_integrations_class.commands_to_remove
+            for command_name in commands_to_remove:
+                if hasattr(self.shell_instance.__class__, command_name):
+                    delattr(self.shell_instance.__class__, command_name)
+                    print(f"Removed command: {command_name}")
+        print(f"{self.SNKInit()['name']} cleaned up.")
 
 class ShellIntegrations: # Add your command which you wanted to type in SNK's Shell here
+    commands_to_remove = []
     @shell_command
+    @shell_remover
     def do_test(self, arg):
         print("hi!")

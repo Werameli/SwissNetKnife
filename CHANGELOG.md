@@ -34,3 +34,8 @@
 - Recompiled lib.zip
 - Recoded initialization process
 - Fixed pluginManager.py
+
+## pre-Beta 1.6
+- Recompiled lib.zip
+- Unload was replaced with reload (FUNCTION DELAYED)
+- Closer and closer to Beta 1.0

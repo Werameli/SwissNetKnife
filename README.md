@@ -16,6 +16,9 @@
 - pre-Beta 1.3 - Update Community (Minor bugfixes + added 'plugman unload' command) - 8/13/2024
 - pre-Beta 1.4 - Update Community (Added code injection from plugins to main script) - 8/13/2024
 - pre-Beta 1.5 - Update Community (Minor bugfixes + recoded initialization function) - 8/13/2024
-- pre-Beta 1.6 - Update Community (Finally fixed unload function) - 8/14/2024
-- Beta 1.0 - Update Community (Added plugin system) - 8/??/2024
-- Beta 1.1 - Patch (Cubical Demolition is now a plugin) - 8/??/2024
+- pre-Beta 1.6 - Update Community (Unload function was replaced with reload function (FUNCTION DELAYED)) - 8/13/2024
+- pre-Beta 1.7 - Update Filepsycho (Added config file and config system itself) - 8/14/2024
+- pre-Beta 1.8 - Update Rebase (Code optimization + minor bug fixes) - 8/14/2024
+- Beta 1.0 - Beta Debut (Added plugin system + added configs + code optimization) - 8/14/2024
+- Beta 1.1 - Update GrandFinale (Fix reload function, write documentation)
+- Release 1.0 - Release
