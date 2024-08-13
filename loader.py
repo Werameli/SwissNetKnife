@@ -7,7 +7,7 @@ import updater
 from lib import color, resolution
 
 filename = "SNK.py"
-libraries = ["ascii.py", "color.py", "resolution.py"]
+libraries = ["ascii.py", "color.py", "resolution.py", "pluginManager.py"]
 loaded = False
 
 class rescuemode:
@@ -125,5 +125,9 @@ if __name__ == "__main__":
         print("\033[1;32;40mLOADING SWISSNETKNIFE...")
     time.sleep(1)
     os.environ['LOADED'] = str(True)
-    subprocess.run(["python3", "SNK.py"], check=False)
-    exit(0)
+    try:
+        subprocess.run(["python3", "SNK.py"], check=False, stderr=subprocess.DEVNULL)
+    except KeyboardInterrupt:
+        subprocess.call(["clear"])
+        print("Detected CTRL+C! Exiting...")
+        exit(0)

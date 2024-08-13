@@ -43,6 +43,7 @@ class SNK_Shell(cmd.Cmd):
         exit(0)
 
     def do_pkgman(self, arg):
+        global result
         match arg:
             case "check":
                 versionfile = open(".version", "r")
@@ -74,6 +75,18 @@ class SNK_Shell(cmd.Cmd):
             case "install":
                 if plugman.ifrepoexists():
                     print("Reading repolist...")
+                    plugman.readrepo()
+                    pkg = input("Enter package name: ")
+                    pkgsearch = plugman.searchinrepo(pkg)
+                    if pkgsearch:
+                        for result in pkgsearch:
+                            print(f"\nFile found in repository: {result['repo_name']}")
+                    install = input("\nProceed with installation? [Y/N] ")
+                    if install.lower() == "y":
+                        plugman.installation(result['file_url'])
+                    else:
+                        print("Installation aborted!")
+
                 else:
                     print("Repolist is empty! Consider adding repositories via 'plugman repoadd'")
 
@@ -105,7 +118,4 @@ class SNK_Shell(cmd.Cmd):
         print(color.green)
 
 if __name__ == '__main__':
-    try:
-        SNK_Shell().cmdloop()
-    except KeyboardInterrupt:
-        exit(0)
+    SNK_Shell().cmdloop()

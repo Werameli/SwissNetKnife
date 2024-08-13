@@ -81,10 +81,10 @@ def update():
     exit()
 
 
-subprocess.call(["clear"])
-print(f"{color.green}SNK Updater Ver. Alpha 1.1\n(C) Werameli (TeamSNK). All rights reserved")
-time.sleep(1)
-
 if __name__ == "__main__":
+    subprocess.call(["clear"])
+    print(f"{color.green}SNK Updater Ver. Alpha 1.1\n(C) Werameli (TeamSNK). All rights reserved")
+    time.sleep(1)
+
     if update_check():
         update()
