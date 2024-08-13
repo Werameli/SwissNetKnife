@@ -18,3 +18,8 @@
 - Unload function is now delayed
 - Added 'repoadd command'
 - Fixed typo in loader.py
+- Added placeholders lib
+
+## pre-Beta 1.3
+- Recompiled lib.zip
+- Added unload function
