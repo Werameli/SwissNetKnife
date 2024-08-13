@@ -6,24 +6,6 @@ import time
 
 from lib import color as color, ascii as art, pluginManager as plugman
 
-subprocess.call(["clear"])
-
-if os.getenv("LOADED") == "True":
-    pass
-else:
-    print("Illegal Launch! Can't launch script without loader")
-    print("Launch loader.py to proceed with script launching!")
-    exit(120)
-
-art.borderstripe()
-
-art.menuart()
-
-art.borderstripe()
-
-print("\nCollection of scripts for various network tasks")
-print(f"Release: Ver. Alpha 1.1\nRemember to run 'pkgman check' every week!\n")
-
 class SNK_Shell(cmd.Cmd):
     intro = f"SwissNetKnife Shell\n(C) Werameli (TeamSNK). All rights reserved\n"
     prompt = "SNK@localhost $>"
@@ -35,15 +17,17 @@ class SNK_Shell(cmd.Cmd):
         print("list - show ASCII-based list of all SNK's scripts")
         print("run - run desired script")
         print("pkgman - SNK's Package Manager")
+        print("plugman - SNK's Plugin Manager")
         print("clear - clear terminal")
         print("restart - restart script")
         print("quit - quit SNK")
 
-    def do_quit(self, arg):
+    @staticmethod
+    def do_quit(arg):
         exit(0)
 
-    def do_pkgman(self, arg):
-        global result
+    @staticmethod
+    def do_pkgman(arg):
         match arg:
             case "check":
                 versionfile = open(".version", "r")
@@ -72,6 +56,14 @@ class SNK_Shell(cmd.Cmd):
                 else:
                     pass
 
+            case _:
+                print("Available commands:")
+                print("check - check is there's a newer version of a script")
+                print("update - start update process if there's a newer version of a script")
+
+    def do_plugman(self, arg):
+        global result
+        match arg:
             case "install":
                 if plugman.ifrepoexists():
                     print("Reading repolist...")
@@ -86,36 +78,64 @@ class SNK_Shell(cmd.Cmd):
                         plugman.installation(result['file_url'])
                     else:
                         print("Installation aborted!")
-
                 else:
                     print("Repolist is empty! Consider adding repositories via 'plugman repoadd'")
-
+            case "unload":
+                pass
+            case "list":
+                plugman.loaded_list()
             case "repoadd":
                 pass
-
             case _:
                 print("Available commands:")
-                print("check - check is there's a newer version of a script")
-                print("update - start update process if there's a newer version of a script")
-                print("repoadd - add plugins repositories to the repolist")
                 print("install - install various plugins")
+                print("unload - unload plugin(s)")
+                print("list - shows a list of all loaded plugins")
+                print("repoadd - add plugins repositories to the repolist")
 
-    def do_restart(self, arg):
+
+    @staticmethod
+    def do_restart(arg):
         print("Restarting...")
         time.sleep(2)
         os.environ['LOADED'] = str(False)
         subprocess.Popen(["python3", "loader.py"])
         exit(0)
 
-    def do_clear(self, arg):
+    @staticmethod
+    def do_clear(arg):
         subprocess.call(["clear"])
 
-    def do_list(self, arg):
+    @staticmethod
+    def do_list(arg):
         art.scriptlist()
 
     def default(self, arg):
         print(f"{color.red}Unknown command. Type 'help' for a list of available commands")
         print(color.green)
 
+
 if __name__ == '__main__':
+    subprocess.call(["clear"])
+
+    if os.getenv("LOADED") == "True":
+        pass
+    else:
+        print("Illegal Launch! Can't launch script without loader")
+        print("Launch loader.py to proceed with script launching!")
+        exit(120)
+
+    print("Initializing plugins...")
+    time.sleep(2)
+    plugman.initialization()
+    subprocess.call(["clear"])
+
+    art.borderstripe()
+
+    art.menuart()
+
+    art.borderstripe()
+
+    print("\nCollection of scripts for various network tasks")
+    print(f"Release: Ver. Alpha 1.1\nRemember to run 'pkgman check' every week!\n")
     SNK_Shell().cmdloop()
