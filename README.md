@@ -5,7 +5,8 @@
 
 ### Made by TeamSNK (Werameli)
 
-# ONLY LAUNCH WITH "LOADER.PY"
+# LAUNCH SETUP/SETUP.PY BEFORE USING SNK
+# LAUNCH WITH LOADER.PY
 
 ### Update Roadmap:
 - Alpha 1.0 - Update Reborn (Created shell, loader, updater) - 8/12/2024
