@@ -105,10 +105,6 @@ class SNK_Shell(cmd.Cmd):
     def do_clear(arg):
         subprocess.call(["clear"])
 
-    @staticmethod
-    def do_list(arg):
-        art.scriptlist()
-
     def default(self, arg):
         print(f"{color.red}Unknown command. Type 'help' for a list of available commands")
         print(color.green)
