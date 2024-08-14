@@ -1,7 +1,7 @@
 # SwissNetKnife
 ## Ultimate lightweight scriptholder for all your scripts
 ## The main target of this project is to create minimal script on Python that replicates unix-like shell, that can store all your scripts in plugins. You can expand this shell by various AIO plugins.
-## ScriptHolder has its own system for writing plugins with very good documentation
+## ScriptHolder has its own system for writing plugins with very good documentation (Visit repo's wiki to read the docs)
 
 ### Made by TeamSNK (Werameli)
 
@@ -20,6 +20,6 @@
 - pre-Beta 1.8 - Update Community (Unload function was replaced with reload function (FUNCTION REMOVED IN 1.8.1 DUE TO VULNERABILITY)) - 8/13/2024
 - pre-Beta 1.8.1 Update Community (Reload function removed + plugin system update) - 8/13/2024
 - Beta 1.9 - Beta Debut + Update Art (Added full version of plugin system, remove pluginlist ascii art because of new plugin system) - 8/14/2024
-- Beta 1.10 (GitHub) - Update GrandFinale (Write documentation) - 8/14/2024
+- Beta 1.10 (GitHub) - Update GrandFinale (Write documentation) [NOW AVAILABLE ON GITHUB WIKI] - 8/14/2024
 - pre-Release 1.11 - Update GrandFinale pt.2 (Make setup.py + code cleanup and optimization) - 8/15/2024
 - Release 1.0 - Release + Update Finalis (Final patches to beta code) - ??/??/????
