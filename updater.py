@@ -10,6 +10,7 @@ from lib import globalplaceholders as gph
 
 updated = False
 
+
 def update_check():
     versionfile = open(".version", "r")
     version = versionfile.read()
@@ -52,8 +53,6 @@ def update():
         print("Fatal error occured while downloading update!")
         print("Please, try again later!")
         exit(0)
-
-
 
     print("Updating files...")
     try:

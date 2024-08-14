@@ -10,6 +10,7 @@ filename = "SNK.py"
 libraries = ["ascii.py", "color.py", "resolution.py", "pluginManager.py"]
 loaded = False
 
+
 class rescuemode:
     @staticmethod
     def checkconnection():
@@ -18,7 +19,6 @@ class rescuemode:
             return True
         except requests.ConnectionError:
             return False
-
 
     @staticmethod
     def terminal():
@@ -29,7 +29,8 @@ class rescuemode:
             match inputstring:
                 case "help":
                     print("WARNING: If you haven't got updater.py this script won't help you as it's necessary to it")
-                    print("NOTE: If you missing repolist.json file, just run 'repocreate'. However if you're missing .version file you need to run 'rescue' command")
+                    print(
+                        "NOTE: If you missing repolist.json file, just run 'repocreate'. However if you're missing .version file you need to run 'rescue' command")
                     print("AVAILABLE COMMANDS:")
                     print("help - get this page")
                     print("rescue - redownload all script files")
@@ -116,6 +117,7 @@ class initScripts:
             rescuemode.terminal()
         time.sleep(1)
 
+
 if __name__ == "__main__":
     subprocess.call(["clear"])
     print(f"{color.green}SNK Loader Ver. {gph.version}(C) Werameli (TeamSNK). All rights reserved\n")
@@ -143,7 +145,7 @@ if __name__ == "__main__":
     time.sleep(1)
     os.environ['LOADED'] = str(True)
     try:
-        subprocess.run(["python3", "SNK.py"], check=False) #, stderr=subprocess.DEVNULL)
+        subprocess.run(["python3", "SNK.py"], check=False, stderr=subprocess.DEVNULL)
     except KeyboardInterrupt:
         subprocess.call(["clear"])
         print("Detected CTRL+C! Exiting...")

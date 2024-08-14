@@ -48,3 +48,12 @@
 - Recompiled lib.zip
 - list command removed
 - rearranged ascii.py
+
+## Beta 1.11
+- Recompiled lib.zip
+- Code cleanup 
+- Add setup.py 
+
+## Beta 1.12
+- Recompiled lib.zip
+- Added boot arguments to loader.py

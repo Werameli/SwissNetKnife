@@ -6,6 +6,7 @@ import time
 
 from lib import color as color, ascii as art, pluginManager as plugman, globalplaceholders as gph
 
+
 class SNK_Shell(cmd.Cmd):
     intro = f"SwissNetKnife Shell\n(C) Werameli (TeamSNK). All rights reserved\n"
     prompt = "SNK@localhost $>"
@@ -33,7 +34,8 @@ class SNK_Shell(cmd.Cmd):
                 versionfile = open(".version", "r")
                 version = versionfile.read()
                 versionfile.close()
-                repoversion = requests.get("https://raw.githubusercontent.com/Werameli/SwissNetKnife/master/.version").text
+                repoversion = requests.get(
+                    "https://raw.githubusercontent.com/Werameli/SwissNetKnife/master/.version").text
 
                 print(color.yellow)
                 print(f"Your version is {version}")
@@ -91,7 +93,6 @@ class SNK_Shell(cmd.Cmd):
                 print("install - install various plugins")
                 print("list - shows a list of all loaded plugins")
                 print("repoadd - add plugins repositories to the repolist\n")
-
 
     @staticmethod
     def do_restart(arg):

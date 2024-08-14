@@ -7,6 +7,7 @@ from datetime import datetime
 
 loaded_plugins = {}
 
+
 def readrepo():
     with open('repolist.json', 'r') as file:
         data = json.load(file)
@@ -14,6 +15,7 @@ def readrepo():
     for repo in data['repositories']:
         print(f"\nName: {repo['name']}\nURL: {repo['url']}\n")
         time.sleep(0.5)
+
 
 def ifrepoexists():
     with open('repolist.json', 'r') as file:
@@ -52,7 +54,7 @@ def searchinrepo(filename):
     return found_files
 
 
-def installation(file_url, destination_folder = "plugins"):
+def installation(file_url, destination_folder="plugins"):
     if not os.path.exists(destination_folder):
         os.makedirs(destination_folder)
 
@@ -93,7 +95,7 @@ def initialization(shell_instance):
     else:
         for filename in plugin_files:
             file_path = os.path.join(plugin_folder, filename)
-            module_name = filename[:-3] \
+            module_name = filename[:-3]
 
             spec = importlib.util.spec_from_file_location(module_name, file_path)
             module = importlib.util.module_from_spec(spec)
@@ -122,6 +124,7 @@ def initialization(shell_instance):
             else:
                 print(f"{filename} does not contain 'PlugInfo' class. Skipping...")
         time.sleep(2)
+
 
 def loaded_list():
     print("\nLoaded plugins:")
