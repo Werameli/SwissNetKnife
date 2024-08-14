@@ -18,4 +18,4 @@ class PlugInfo:  # DO NOT REMOVE
 class ShellIntegrations:
     @shell_command
     def do_test(self, arg):
-        print("hi!")
+        print("This is test output from plugin!")

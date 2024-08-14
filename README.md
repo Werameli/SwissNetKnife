@@ -22,5 +22,5 @@
 - Beta 1.9 - Beta Debut + Update Art (Added full version of plugin system, remove pluginlist ascii art because of new plugin system) - 8/14/2024
 - Beta 1.10 (GitHub) - Update GrandFinale (Write documentation) [NOW AVAILABLE ON GITHUB WIKI] - 8/14/2024
 - Beta 1.11 - Update GrandFinale pt.2 (Make setup.py + code cleanup and optimization) - 8/14/2024
-- pre-Release 1.12 - Update Arguing (Added boot arguments) - 8/14/2024
-- Release 1.0 - Release + Update Finalis (Final patches to beta code) - ??/??/????
+- Release 1.0 - Release + Update Finalis pt.2 (Added EasterEgg + Final minor patches to beta code) - 8/14/2024 - 14:04
+- To be continued...

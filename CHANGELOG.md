@@ -54,6 +54,8 @@
 - Code cleanup 
 - Add setup.py 
 
-## Beta 1.12
+## Release 1.0
 - Recompiled lib.zip
-- Added boot arguments to loader.py
+- Added EasterEgg
+- Rewrite setup.py
+- Release

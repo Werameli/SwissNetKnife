@@ -33,7 +33,7 @@ class rescuemode:
                         "NOTE: If you missing repolist.json file, just run 'repocreate'. However if you're missing .version file you need to run 'rescue' command")
                     print("AVAILABLE COMMANDS:")
                     print("help - get this page")
-                    print("rescue - redownload all script files")
+                    print("rescue - redownload all necessary files")
                     print("repocreate - create empty repolist.json")
                     print("exit - exit rescue mode")
                 case "rescue":

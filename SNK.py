@@ -133,7 +133,7 @@ if __name__ == '__main__':
 
     art.borderstripe()
 
-    print("\nCollection of scripts for various network tasks")
+    print("\nUltimate lightweight scriptholder for all your scripts")
     print(f"Release: Ver. {gph.version}")
     print("")
     shell.cmdloop()

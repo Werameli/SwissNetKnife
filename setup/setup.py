@@ -1,13 +1,20 @@
 import os
 import time
 
-print("Starting installation of required packages...")
+packages = ["sys", "urllib3", "importlib", "requests"]
 
-os.system('pip3 install sys')
-os.system('pip3 install urllib3')
-os.system('pip3 install importlib')
-os.system('pip3 install requests')
+def install_packages():
+    try:
+        for package in packages:
+            os.system(f"pip install {package}")
+            print("Installation complete!")
+            print("Exiting in 5 seconds...")
+            time.sleep(5)
+            exit(0)
+    except Exception as e:
+        print(f"Failed to install required packages due to {e}")
 
-print("Installation complete!")
-print("Exiting in 5 seconds...")
-time.sleep(5)
+
+if __name__ == "__main__":
+    print("Starting installation of required packages...")
+    install_packages()

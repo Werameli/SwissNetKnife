@@ -50,7 +50,7 @@ def update():
                                    f"{os.getcwd()}/tmp/loader.py")
     except urllib.request.HTTPError:
         print(color.red)
-        print("Fatal error occured while downloading update!")
+        print("Fatal error occurred while downloading update!")
         print("Please, try again later!")
         exit(0)
 
@@ -70,7 +70,7 @@ def update():
     except shutil.Error or zipfile.BadZipFile as error:
         print(color.red)
         print(error)
-        print("Fatal error occured while updating files!")
+        print("Fatal error occurred while updating files!")
         print("Please, contact our developer team to solve the issue!")
         exit(0)
 

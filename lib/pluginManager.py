@@ -116,7 +116,7 @@ def initialization(shell_instance):
                 plugin_name = metadata.get("name", module_name)
                 loaded_plugins[plugin_name] = plug_info_instance
 
-                print(f"Loading plugin: {plugin_name}")
+                print(f"Initializing plugin: {plugin_name}")
 
                 inject_shell_commands(shell_instance, module)
 
