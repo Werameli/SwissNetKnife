@@ -43,3 +43,8 @@
 ## pre-Beta 1.8.1
 - Recompiled lib.zip
 - Reload function removed
+
+## Beta 1.9
+- Recompiled lib.zip
+- list command removed
+- rearranged ascii.py
