@@ -3,9 +3,10 @@
 ## The main target of this project is to create minimal script on Python that replicates unix-like shell, that can store all your scripts in plugins. You can expand this shell by various AIO plugins.
 ## ScriptHolder has its own system for writing plugins with very good documentation (Visit repo's wiki to read the docs)
 
-### Made by TeamSNK (Werameli)
+### Made by Werameli (TeamSNK)
 
-# ONLY LAUNCH WITH "LOADER.PY"
+# LAUNCH SETUP/SETUP.PY BEFORE USING SNK
+# LAUNCH WITH LOADER.PY
 
 ### Update Roadmap:
 - Alpha 1.0 - Update Reborn (Created shell, loader, updater) - 8/12/2024
