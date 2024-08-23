@@ -102,7 +102,6 @@ def initialization(shell_instance):
 
             try:
                 spec.loader.exec_module(module)
-                print(f"Loaded module: {filename}")
             except Exception as e:
                 print(f"Failed to load module: {filename} due to {e}")
                 time.sleep(4)
@@ -119,7 +118,6 @@ def initialization(shell_instance):
                 print(f"Initializing plugin: {plugin_name}")
 
                 inject_shell_commands(shell_instance, module)
-
                 print(f"Plugin '{plugin_name}' loaded successfully.")
             else:
                 print(f"{filename} does not contain 'PlugInfo' class. Skipping...")

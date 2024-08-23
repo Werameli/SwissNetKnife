@@ -4,6 +4,7 @@ import time
 import requests
 import subprocess
 import updater
+import sys
 from lib import color, resolution, globalplaceholders as gph
 
 filename = "SNK.py"
@@ -145,8 +146,18 @@ if __name__ == "__main__":
     time.sleep(1)
     os.environ['LOADED'] = str(True)
     try:
-        subprocess.run(["python3", "SNK.py"], check=False, stderr=subprocess.DEVNULL)
+        if sys.argv[1] == "-d" or "--debug" in sys.argv:
+            print(color.red)
+            print("WARNING! Debug mode is ENABLED!")
+            print(color.green)
+            time.sleep(1)
+            subprocess.run(["python3", "SNK.py"], check=False)
+        else:
+            subprocess.run(["python3", "SNK.py"], check=False, stderr=subprocess.DEVNULL)
     except KeyboardInterrupt:
-        subprocess.call(["clear"])
-        print("Detected CTRL+C! Exiting...")
-        exit(0)
+        if sys.argv[1] == "-d" or "--debug" in sys.argv:
+            exit(0)
+        else:
+            subprocess.call(["clear"])
+            print("Detected CTRL+C! Exiting...")
+            exit(0)

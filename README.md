@@ -24,4 +24,4 @@
 - Beta 1.10 (GitHub) - Update GrandFinale (Write documentation) [NOW AVAILABLE ON GITHUB WIKI] - 8/14/2024
 - Beta 1.11 - Update GrandFinale pt.2 (Make setup.py + code cleanup and optimization) - 8/14/2024
 - Release 1.0 - Release + Update Finalis pt.2 (Added EasterEgg + Final minor patches to beta code) - 8/14/2024 - 14:04
-- To be continued...
+- Release 1.1 - Update Developerus Pluginus (added error tracing feature + updated SNKUnited Repo + Plugin System Update DELAYED) - 8/23/2024

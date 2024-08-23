@@ -59,3 +59,9 @@
 - Added EasterEgg
 - Rewrite setup.py
 - Release
+
+## Release 1.1
+- Updated plugin system (read wiki) (FUNCTION DELAYED)
+- Recompiled lib.zip
+- Added debug argument (trace errors)
+- Updated SNKUnited Repo
